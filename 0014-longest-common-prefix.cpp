@@ -20,3 +20,25 @@ public:
     }
 };
 
+//2nd sub
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.empty()) {
+            return "";
+        }
+        int len = INT_MAX;
+        for (auto& str : strs) {
+            len = len > str.length() ? str.length() : len;
+        }
+        for (int i = 0; i < len; i++) {
+            for (auto& str : strs) {
+                if (str[i] != strs[0][i]) {
+                    len = i;
+                    break;
+                }
+            }
+        }
+        return strs[0].substr(0, len);
+    }
+};
