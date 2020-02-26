@@ -1,4 +1,4 @@
-// max/min heap
+// IPO greedy solution
 
 class Solution {
 public:
