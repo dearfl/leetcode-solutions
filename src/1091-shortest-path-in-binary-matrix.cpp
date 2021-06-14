@@ -43,3 +43,38 @@ public:
         return -1;
     }
 };
+
+class Solution {
+public:
+
+    int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        int n = grid.size();
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> oq;
+        set<pair<int, int>> open, close;
+        vector<pair<int, int>> direction{{1, 1}, {1, 0}, {0, 1}, {-1, 1}, {1, -1}, {0, -1}, {-1, 0}, {-1, -1}};
+        if (grid[0][0] == 0) {
+            oq.emplace(1, pair<int, int>{0, 0});
+            open.emplace(0, 0);
+        }
+        while (!oq.empty()) {
+            auto [v, pos] = oq.top();
+            auto &[a, b] = pos;
+            oq.pop();
+            open.erase(pos);
+            if (a == n - 1 && b == n - 1) {
+                return v;
+            }
+            if (close.find(pos) == close.end()) {
+                close.insert(pos);
+                for (auto &[i, j] : direction) {
+                    int x = a + i, y = b + j;
+                    if (0 <= x && x < n && 0 <= y && y < n && grid[x][y] == 0 && close.find({x, y}) == close.end()  && open.find({x, y}) == open.end()) {
+                        open.emplace(x, y);
+                        oq.emplace(v + 1, pair<int, int>{x, y});
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+};
