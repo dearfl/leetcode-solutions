@@ -78,3 +78,39 @@ public:
         return -1;
     }
 };
+
+// BFS solution by votrubac
+class Solution {
+public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& g, int steps = 0) {
+        int n = g.size();
+        queue<pair<int, int>> q;
+        vector<pair<int, int>> direction{{1, 1},{0, 1},{1, 0},{-1, 1},{1, -1},{0, -1},{-1, 0},{-1, -1}};
+        q.emplace(0, 0); // we won't return steps if g[0][0] == 1, so we just push {0, 0} here
+        while (!q.empty()) {
+            steps++;
+            queue<pair<int, int>> q1;
+            // for every pos we can reach
+            while (!q.empty()) {
+                auto [x, y] = q.front();
+                q.pop();
+                // mark pos as visited
+                if (exchange(g[x][y], 1) == 1) {
+                    continue;
+                }
+                if (x == n - 1 && y == n - 1) {
+                    return steps;
+                }
+                for (auto &[i, j] : direction) {
+                    int r = x + i, t = y + j;
+                    if (0 <= r && r < n && 0 <= t && t < n && !g[r][t]) {
+                        q1.emplace(r, t);
+                    }
+                }
+            }
+            // swap queues means we take a extra step
+            swap(q, q1);
+        }
+        return -1;
+    }
+};
