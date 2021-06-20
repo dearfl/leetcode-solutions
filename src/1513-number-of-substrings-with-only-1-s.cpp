@@ -6,13 +6,13 @@
 //
 
 class Solution {
-    public:
-        int numSub(string s) {
-            int res = 0, count = 0;
-            for (const auto c : s) {
-                count = c == '1' ? count + 1 : 0;
-                res = (res + count) % 1000000007;
-            }
-            return res;
+public:
+    int numSub(string s) {
+        int res = 0, count = 0;
+        for (const auto c : s) {
+            count = c == '1' ? count + 1 : 0;
+            res = (res + count) % 1000000007;
         }
+        return res;
+    }
 };
