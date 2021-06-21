@@ -47,3 +47,22 @@ public:
         return ans;
     }
 };
+
+// simplified version
+class Solution {
+public:
+    vector<TreeNode*> generateTrees(int n, int base = 0) {
+        vector<TreeNode*> ans;
+        if (n == 0) {
+            return { nullptr };
+        }
+        for (int i = 1; i <= n; i++) {
+            for (auto left : generateTrees(i - 1, base)) {
+                for (auto right : generateTrees(n - i, i + base)) {
+                    ans.push_back(new TreeNode(i + base, left, right));
+                }
+            }
+        }
+        return ans;
+    }
+};
