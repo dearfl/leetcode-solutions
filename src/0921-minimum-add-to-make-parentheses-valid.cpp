@@ -27,3 +27,22 @@ public:
         return ans + stack.size();
     }
 };
+
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int ans = 0, open = 0;
+        for (const auto c : s) {
+            if (c == '(') {
+                open++;
+            } else {
+                if (open == 0) {
+                    ans++;
+                } else {
+                    open--;
+                }
+            }
+        }
+        return ans + open;
+    }
+};
