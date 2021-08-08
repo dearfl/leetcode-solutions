@@ -3,7 +3,7 @@
 // For example, "Hello World", "HELLO", and "hello world hello world" are all sentences.
 // You are given a sentence s and an integer k. You want to truncate s such that it contains only the first k words. Return s after truncating it.
 
-ass Solution {
+class Solution {
 public:
     string truncateSentence(string s, int k) {
         int i = 0;

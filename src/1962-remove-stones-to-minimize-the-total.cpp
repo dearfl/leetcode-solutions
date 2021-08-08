@@ -8,7 +8,7 @@
 // floor(x) is the greatest integer that is smaller than or equal to x (i.e., rounds x down).
 //
 
-ass Solution {
+class Solution {
 public:
     int minStoneSum(vector<int>& piles, int k) {
         priority_queue<int> pq;

@@ -10,7 +10,7 @@
 // Return the minimum number of swaps to make s balanced.
 //
 
-ass Solution {
+class Solution {
 public:
     int minSwaps(string s) {
         vector<char> s1, s2;

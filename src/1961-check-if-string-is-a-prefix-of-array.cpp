@@ -5,7 +5,7 @@
 // Return true if s is a prefix string of words, or false otherwise.
 //
 
-ass Solution {
+class Solution {
 public:
     bool isPrefixString(string s, vector<string>& words) {
         for (const string str : words) {
