@@ -66,11 +66,6 @@ public:
         if (!root) {
             return false;
         }
-        if (root->val == head->val) {
-            if (helper(head->next, root->left) || helper(head->next, root->right)) {
-                return true;
-            }
-        }
-        return isSubPath(head, root->left) || isSubPath(head, root->right);
+        return helper(head, root) || isSubPath(head, root->left) || isSubPath(head, root->right);
     }
 };
