@@ -7,7 +7,7 @@
 // arr[i] == 2 * arr[j]
 //
 
-ass Solution {
+class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {
         unordered_set<int> s;
