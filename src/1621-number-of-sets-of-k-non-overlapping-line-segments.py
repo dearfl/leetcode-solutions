@@ -5,7 +5,7 @@
 # have to cover all n points, and they are allowed to share endpoints.
 
 # Return the number of ways we can draw k non-overlapping line segments. Since
-# this number can be huge, return it modulo 109 + 7.
+# this number can be huge, return it modulo 10^9 + 7.
 
 class Solution:
     def numberOfSets(self, n: int, k: int) -> int:
