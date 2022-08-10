@@ -1,4 +1,4 @@
-/*
+'''
 There are n rooms you need to visit, labeled from 0 to n - 1. Each day is labeled, starting from 0. You will go in and visit one room a day.
 
 Initially on day 0, you visit room 0. The order you visit the rooms for the coming days is determined by the following rules and a given 0-indexed array nextVisit of length n:
@@ -34,12 +34,15 @@ Constraints:
     n == nextVisit.length
     2 <= n <= 10^5
     0 <= nextVisit[i] <= i
-*/
+'''
+
+from typing import List
+
 
 class Solution:
     def firstDayBeenInAllRooms(self, nv: List[int]) -> int:
         mod = 10 ** 9 + 7
-        dp = [ 0 ]
-        for idx, val in enumerate(nv[1:]):
+        dp = [0]
+        for idx, _ in enumerate(nv[1:]):
             dp.append((dp[idx] + 1) * 2 - dp[nv[idx]])
         return dp[len(nv) - 1] % mod
